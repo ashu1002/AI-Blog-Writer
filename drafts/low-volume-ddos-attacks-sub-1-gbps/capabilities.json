@@ -13,7 +13,7 @@
     "weasyprint": false,
     "google.genai": false,
     "requests": true,
-    "markdown": false
+    "markdown": true
   },
   "project_root_files": {
     "BRAND.md": false,

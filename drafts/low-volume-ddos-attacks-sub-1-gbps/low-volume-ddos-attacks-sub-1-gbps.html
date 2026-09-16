@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://www.nexusguard.com/blog/low-volume-ddos-attacks-sub-1-gbps/hero.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Sub-1 Gbps Attacks: The 85% Nobody Puts on a Slide">
+<meta property="og:image:alt" content="Typographic cover showing the statistic that 85 percent of DDoS attacks remain under 1 Gbps, set against a dark gradient background.">
 <meta property="og:site_name" content="www.nexusguard.com">
 <meta property="article:published_time" content="2026-09-16">
 <meta property="article:author" content="[AUTHOR NAME], Nexusguard Research Team">
@@ -178,9 +178,9 @@ img{max-width:100%;height:auto}
 <p class="kicker">Article</p>
 <h1>Sub-1 Gbps Attacks: The 85% Nobody Puts on a Slide</h1>
 <p class="dek">85% of DDoS attacks stay under 1 Gbps, yet every threat report headlines the terabit outlier. Why low-volume attacks evade detection and what to do about it.</p>
-<p class="byline"><strong>By [AUTHOR NAME], Nexusguard Research Team</strong> &middot; 2026-09-16 &middot; 13 min read &middot; 2706 words</p>
+<p class="byline"><strong>By [AUTHOR NAME], Nexusguard Research Team</strong> &middot; 2026-09-16 &middot; 13 min read &middot; 2760 words</p>
 </header>
-<figure class="hero"><img src="hero.png" alt="Sub-1 Gbps Attacks: The 85% Nobody Puts on a Slide" width="1200" height="630"></figure>
+<figure class="hero"><img src="hero.png" alt="Typographic cover showing the statistic that 85 percent of DDoS attacks remain under 1 Gbps, set against a dark gradient background." width="1200" height="630"></figure>
 <p>The most common DDoS attack against your network this year will be small enough that your monitoring probably will not call it an attack. 
 Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 Gbps (<a href="https://www.nexusguard.com/threat-report/ddos-trend-report-2025">Nexusguard 2025 DDoS Trends Report</a>, June 2025). Attackers favour short-burst, low-resource attacks precisely because they evade detection.</p>
 <p>That number appears in our report. It did not appear in most of the coverage of our report. The headline went to the record: a 962.2 Gbps peak and a 69% year-over-year rise in average attack size, both from that same report. Both facts are true, both came from the same dataset, and only one of them describes what happens to a service provider network on an ordinary Tuesday.</p>
@@ -188,7 +188,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <blockquote>
 <p><strong>Key Takeaways</strong></p>
 <ul>
-<li>85% of DDoS attacks stay under 1 Gbps, and over half of sub-1 Gbps attacks fall under 200 Mbps, small enough to pass for ordinary traffic noise.</li>
+<li>85% of DDoS attacks stay under 1 Gbps, and over half of sub-1 Gbps attacks fall under 200 Mbps (Corero 2026 Threat Intelligence Report, April 2026), small enough to pass for ordinary traffic noise.</li>
 <li>More than 90% of network-layer attacks finish in under 10 minutes, and pulse attacks as short as six seconds are now documented. Reactive mitigation cannot engage in that window.</li>
 <li>Threshold-based detection and sampled flow telemetry are not failing at this job. They were configured to ignore this traffic band on purpose, to suppress false positives.</li>
 <li>At this size, a DDoS event is often reconnaissance or cover rather than a disruption attempt, which makes it a security signal, not just an availability one.</li>
@@ -197,7 +197,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <h2>Most DDoS Attacks Are Too Small to Make the Headline</h2>
 <p>The size distribution is not in dispute, and it is remarkably consistent across vendors who see very different slices of internet traffic.</p>
 <figure>
-<svg viewbox="0 0 640 300" role="img" aria-label="Share of DDoS attacks below the stated size threshold by reporting vendor. Nexusguard 85 percent under 1 Gbps. Cloudflare 99 percent under 1 Gbps in Q1 2025 and 96.6 percent under 500 Mbps in H1 2026. Corero and DigiCert 73 percent under 500 Mbps.">
+<svg viewbox="0 0 640 300" role="img" aria-label="Share of DDoS attacks below the stated size threshold by reporting vendor. Nexusguard 85 percent under 1 Gbps. Cloudflare 99 percent under 1 Gbps in Q1 2025 and 96.6 percent under 500 Mbps in H1 2026. DigiCert UltraDDoS Protect 73 percent under 500 Mbps.">
 <title>Share of DDoS attacks below the stated size threshold, by reporting vendor</title>
 <line x1="250" y1="40" x2="250" y2="250" stroke="#94a3b8" stroke-width="1"></line>
 <text x="240" y="62" text-anchor="end" fill="#64748b" font-size="13">Nexusguard 2025</text>
@@ -212,7 +212,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <text x="240" y="178" text-anchor="end" fill="#94a3b8" font-size="11">under 500 Mbps</text>
 <rect x="250" y="150" width="318.8" height="26" rx="3" fill="#60a5fa"></rect>
 <text x="578.8" y="169" fill="#64748b" font-size="13">96.6%</text>
-<text x="240" y="212" text-anchor="end" fill="#64748b" font-size="13">Corero / DigiCert 2025</text>
+<text x="240" y="212" text-anchor="end" fill="#64748b" font-size="13">DigiCert UltraDDoS 2025</text>
 <text x="240" y="228" text-anchor="end" fill="#94a3b8" font-size="11">under 500 Mbps</text>
 <rect x="250" y="200" width="240.9" height="26" rx="3" fill="#93c5fd"></rect>
 <text x="500.9" y="219" fill="#64748b" font-size="13">73%</text>
@@ -220,7 +220,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <text x="250" y="268" fill="#94a3b8" font-size="11">0%</text>
 <text x="580" y="268" text-anchor="end" fill="#94a3b8" font-size="11">100%</text>
 </svg>
-<figcaption>Thresholds differ by report and are labelled per bar. Sources: Nexusguard 2025 DDoS Trends Report (June 2025); Cloudflare DDoS Threat Reports, Q1 2025 and H1 2026; Corero and DigiCert UltraDDoS reporting, 2025.</figcaption>
+<figcaption>Thresholds differ by report and are labelled per bar. Sources: Nexusguard 2025 DDoS Trends Report (June 2025); Cloudflare DDoS Threat Reports, Q1 2025 and H1 2026; DigiCert UltraDDoS Protect 2025 Biannual Report.</figcaption>
 </figure>
 
 <table>
@@ -234,25 +234,25 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 </thead>
 <tbody>
 <tr>
-<td>Nexusguard 2025 DDoS Trends Report</td>
+<td><a href="https://www.nexusguard.com/threat-report/ddos-trend-report-2025">Nexusguard 2025 DDoS Trends Report</a></td>
 <td>under 1 Gbps</td>
 <td>85%</td>
 <td>published June 2025</td>
 </tr>
 <tr>
-<td>Cloudflare DDoS Threat Report</td>
+<td><a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1/">Cloudflare DDoS Threat Report Q1 2025</a></td>
 <td>under 1 Gbps</td>
 <td>99%</td>
 <td>Q1 2025</td>
 </tr>
 <tr>
-<td>Cloudflare DDoS Threat Report</td>
+<td><a href="https://blog.cloudflare.com/ddos-threat-report-2026-h1/">Cloudflare DDoS Threat Report H1 2026</a></td>
 <td>under 500 Mbps</td>
 <td>96.6%</td>
 <td>H1 2026</td>
 </tr>
 <tr>
-<td>Corero / DigiCert UltraDDoS reporting</td>
+<td><a href="https://www.digicert.com/content/dam/digicert/pdfs/report/digicert-ultraddos-2025-biannual-report-1.pdf">DigiCert UltraDDoS Protect 2025 Biannual Report</a></td>
 <td>under 500 Mbps</td>
 <td>73%</td>
 <td>2025</td>
@@ -285,6 +285,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <svg viewbox="0 0 640 280" role="img" aria-label="Average attack size rose 69 percent year over year and peak attack size rose 262 percent, while the share of attacks under 1 Gbps held at 85 percent.">
 <title>Headline metrics versus the size distribution</title>
 <line x1="60" y1="60" x2="60" y2="215" stroke="#94a3b8" stroke-width="1"></line>
+<text x="60" y="46" fill="#94a3b8" font-size="11">Year-over-year change (left two) against share of all attacks (right)</text>
 <line x1="60" y1="215" x2="600" y2="215" stroke="#94a3b8" stroke-width="1"></line>
 <line x1="150" y1="215" x2="150" y2="95" stroke="#f97316" stroke-width="2"></line>
 <circle cx="150" cy="95" r="8" fill="#f97316"></circle>
@@ -302,7 +303,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <text x="510" y="235" text-anchor="middle" fill="#64748b" font-size="12">Share under</text>
 <text x="510" y="250" text-anchor="middle" fill="#64748b" font-size="12">1 Gbps (85%)</text>
 </svg>
-<figcaption>The maximum grew. The distribution did not. Only one of these facts reliably reaches a slide.</figcaption>
+<figcaption>Year-over-year change. Average attack size and the 85 per cent share: <a href="https://www.nexusguard.com/threat-report/ddos-trend-report-2025">Nexusguard 2025 DDoS Trends Report</a> (June 2025). Peak attack size: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026). The maximum grew. The distribution did not.</figcaption>
 </figure>
 
 <h3>What "We Have Never Been Hit" Usually Means</h3>
@@ -342,13 +343,14 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <figure>
 <svg viewbox="0 0 400 260" role="img" aria-label="More than 50 percent of sub-1 Gbps DDoS attacks are under 200 megabits per second, according to Corero 2026 Threat Intelligence Report.">
 <title>Distribution within sub-1 Gbps attacks</title>
-<path d="M 200.00 40.00 A 80 80 0 0 1 200.00 40.00" fill="none" stroke="#e2e8f0" stroke-width="34"></path>
+<path d="M 200 40 A 80 80 0 0 1 200 200" fill="none" stroke="#e2e8f0" stroke-width="34"></path>
+<path d="M 200 200 A 80 80 0 0 1 200 40" fill="none" stroke="#e2e8f0" stroke-width="34"></path>
 <path d="M 200.00 40.00 A 80 80 0 1 1 187.49 199.02" fill="none" stroke="#2563eb" stroke-width="34"></path>
 <text x="200" y="114" text-anchor="middle" fill="#64748b" font-size="30">&gt;50%</text>
 <text x="200" y="136" text-anchor="middle" fill="#94a3b8" font-size="12">under 200 Mbps</text>
 <text x="200" y="232" text-anchor="middle" fill="#64748b" font-size="12">Share of sub-1 Gbps attacks</text>
 </svg>
-<figcaption>More than half of sub-1 Gbps attacks stay under 200 Mbps, a volume that reads as ordinary traffic variation on most links.</figcaption>
+<figcaption>More than half of sub-1 Gbps attacks stay under 200 Mbps, a volume that reads as ordinary traffic variation on most links. Source: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026).</figcaption>
 </figure>
 
 <h2>How Nexusguard Approaches the Low-Volume Majority</h2>
@@ -368,7 +370,7 @@ measurement, and we have not claimed a quantified correlation.</p>
 Research Team</a>.</p>
 <h2>Frequently Asked Questions</h2>
 <h3>What percentage of DDoS attacks are under 1 Gbps?</h3>
-<p>85% of DDoS attacks remain under 1 Gbps, according to the Nexusguard 2025 DDoS Trends Report published in June 2025. Other vendors report similar or higher shares against their own thresholds, including 99% under 1 Gbps in Cloudflare's Q1 2025 data.</p>
+<p>85% of DDoS attacks remain under 1 Gbps, according to the Nexusguard 2025 DDoS Trends Report published in June 2025. Other vendors report similar or higher shares against their own thresholds, including 99% under 1 Gbps in <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q1/">Cloudflare's Q1 2025 data</a>.</p>
 <h3>What is a sub-saturating DDoS attack?</h3>
 <p>An attack deliberately sized below the target's link capacity and below its detection thresholds. It degrades service, exhausts stateful devices or occupies defenders without generating the traffic volume that would trigger an alarm.</p>
 <h3>Are small DDoS attacks actually dangerous?</h3>
@@ -385,7 +387,7 @@ Research Team</a>.</p>
 <hr>
 <p><strong>About the author.</strong> [AUTHOR NAME] is [JOB TITLE] on the Nexusguard Research
 Team, which has tracked DDoS attack patterns across service provider networks
-since 2008 and first documented the bit-and-piece attack pattern in Q3 2018.
+since 2008 and has published bit-and-piece attack research since 2018.
 <a href="/about">More about Nexusguard Research</a>.</p>
 <p><em>Reviewed by [REVIEWER NAME], [REVIEWER TITLE]. Editorial and fact-check policy:
 every statistic is attributed to a named report with its measurement threshold
