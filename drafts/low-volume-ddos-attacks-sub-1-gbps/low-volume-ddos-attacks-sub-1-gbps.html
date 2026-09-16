@@ -178,9 +178,9 @@ img{max-width:100%;height:auto}
 <p class="kicker">Article</p>
 <h1>Sub-1 Gbps Attacks: The 85% Nobody Puts on a Slide</h1>
 <p class="dek">85% of DDoS attacks stay under 1 Gbps, yet every threat report headlines the terabit outlier. Why low-volume attacks evade detection and what to do about it.</p>
-<p class="byline"><strong>By [AUTHOR NAME], Nexusguard Research Team</strong> &middot; 2026-09-16 &middot; 13 min read &middot; 2760 words</p>
+<p class="byline"><strong>By [AUTHOR NAME], Nexusguard Research Team</strong> &middot; 2026-09-16 &middot; 14 min read &middot; 2817 words</p>
 </header>
-<figure class="hero"><img src="hero.png" alt="Typographic cover showing the statistic that 85 percent of DDoS attacks remain under 1 Gbps, set against a dark gradient background." width="1200" height="630"></figure>
+<figure class="hero"><img loading="lazy" src="hero.png" alt="Typographic cover showing the statistic that 85 percent of DDoS attacks remain under 1 Gbps, set against a dark gradient background." width="1200" height="630"></figure>
 <p>The most common DDoS attack against your network this year will be small enough that your monitoring probably will not call it an attack. 
 Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 Gbps (<a href="https://www.nexusguard.com/threat-report/ddos-trend-report-2025">Nexusguard 2025 DDoS Trends Report</a>, June 2025). Attackers favour short-burst, low-resource attacks precisely because they evade detection.</p>
 <p>That number appears in our report. It did not appear in most of the coverage of our report. The headline went to the record: a 962.2 Gbps peak and a 69% year-over-year rise in average attack size, both from that same report. Both facts are true, both came from the same dataset, and only one of them describes what happens to a service provider network on an ordinary Tuesday.</p>
@@ -272,7 +272,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <h3>Small Does Not Mean Harmless</h3>
 <p>Three failure modes show up well below saturation:</p>
 <ul>
-<li><strong>Stateful device exhaustion.</strong> Firewalls, load balancers and NAT gateways run out of session table entries long before they run out of bandwidth. A 200 Mbps SYN flood can exhaust state on a device rated for far more throughput.</li>
+<li><strong>Stateful device exhaustion.</strong> Firewalls, load balancers and NAT gateways run out of session table entries long before they run out of bandwidth. A 200 Mbps SYN flood can exhaust state on a device rated for far more throughput. (Illustrative: the exact threshold depends on the device's session table size and timeout settings, not on its rated throughput.)</li>
 <li><strong>SLA-relevant degradation.</strong> Latency and packet loss that never register as an outage still breach performance commitments, and customers feel them before your monitoring does.</li>
 <li><strong>Support cost with no incident to point at.</strong> Tickets arrive, engineers investigate, nothing correlates with a security event, and the time is written off as an unexplained blip.</li>
 </ul>
@@ -282,28 +282,24 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <p>Telemetry compounds it. Sampled flow at 1:1000 with a five-minute export interval cannot resolve a 40-second event at 200 Mbps. The attack is gone before the export lands, and what survives sampling looks like jitter. Detection logic never gets a chance to be wrong, because it never sees the data.</p>
 <p>Then there is the arithmetic of reactive mitigation. If detection takes 60 seconds and diversion to scrubbing takes another 60, a six-second pulse has finished twenty times over before anything engages. On-demand scrubbing is not tuned badly for this class of attack. It is structurally incapable of touching it.</p>
 <figure>
-<svg viewbox="0 0 640 280" role="img" aria-label="Average attack size rose 69 percent year over year and peak attack size rose 262 percent, while the share of attacks under 1 Gbps held at 85 percent.">
+<svg viewbox="0 0 640 220" role="img" aria-label="Headline metrics versus the size distribution. Average attack size rose 69 percent year over year per Nexusguard 2025. Peak attack size rose 262 percent per Corero 2026. The share of attacks under 1 Gbps held at 85 percent per Nexusguard 2025. The two growth figures come from different vendors over different periods and are not a like-for-like pair.">
 <title>Headline metrics versus the size distribution</title>
-<line x1="60" y1="60" x2="60" y2="215" stroke="#94a3b8" stroke-width="1"></line>
-<text x="60" y="46" fill="#94a3b8" font-size="11">Year-over-year change (left two) against share of all attacks (right)</text>
-<line x1="60" y1="215" x2="600" y2="215" stroke="#94a3b8" stroke-width="1"></line>
-<line x1="150" y1="215" x2="150" y2="95" stroke="#f97316" stroke-width="2"></line>
-<circle cx="150" cy="95" r="8" fill="#f97316"></circle>
-<text x="150" y="82" text-anchor="middle" fill="#64748b" font-size="13">+69%</text>
-<text x="150" y="235" text-anchor="middle" fill="#64748b" font-size="12">Average</text>
-<text x="150" y="250" text-anchor="middle" fill="#64748b" font-size="12">attack size</text>
-<line x1="330" y1="215" x2="330" y2="70" stroke="#f97316" stroke-width="2"></line>
-<circle cx="330" cy="70" r="8" fill="#f97316"></circle>
-<text x="330" y="57" text-anchor="middle" fill="#64748b" font-size="13">+262%</text>
-<text x="330" y="235" text-anchor="middle" fill="#64748b" font-size="12">Peak</text>
-<text x="330" y="250" text-anchor="middle" fill="#64748b" font-size="12">attack size</text>
-<line x1="510" y1="215" x2="510" y2="205" stroke="#2563eb" stroke-width="2"></line>
-<circle cx="510" cy="205" r="8" fill="#2563eb"></circle>
-<text x="510" y="192" text-anchor="middle" fill="#64748b" font-size="13">unchanged</text>
-<text x="510" y="235" text-anchor="middle" fill="#64748b" font-size="12">Share under</text>
-<text x="510" y="250" text-anchor="middle" fill="#64748b" font-size="12">1 Gbps (85%)</text>
+<text x="20" y="28" fill="#64748b" font-size="12">What moved, and what did not</text>
+<rect x="20" y="50" width="190" height="120" rx="6" fill="none" stroke="#e2e8f0"></rect>
+<text x="115" y="105" text-anchor="middle" fill="#f97316" font-size="34">+69%</text>
+<text x="115" y="132" text-anchor="middle" fill="#64748b" font-size="13">Average attack size</text>
+<text x="115" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">Nexusguard, 2025</text>
+<rect x="225" y="50" width="190" height="120" rx="6" fill="none" stroke="#e2e8f0"></rect>
+<text x="320" y="105" text-anchor="middle" fill="#f97316" font-size="34">+262%</text>
+<text x="320" y="132" text-anchor="middle" fill="#64748b" font-size="13">Peak attack size</text>
+<text x="320" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">Corero, 2026</text>
+<rect x="430" y="50" width="190" height="120" rx="6" fill="none" stroke="#e2e8f0"></rect>
+<text x="525" y="105" text-anchor="middle" fill="#2563eb" font-size="34">85%</text>
+<text x="525" y="132" text-anchor="middle" fill="#64748b" font-size="13">Share under 1 Gbps</text>
+<text x="525" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">Nexusguard, 2025</text>
+<text x="20" y="196" fill="#94a3b8" font-size="11">Not to scale: the three figures measure different things and share no axis.</text>
 </svg>
-<figcaption>Year-over-year change. Average attack size and the 85 per cent share: <a href="https://www.nexusguard.com/threat-report/ddos-trend-report-2025">Nexusguard 2025 DDoS Trends Report</a> (June 2025). Peak attack size: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026). The maximum grew. The distribution did not.</figcaption>
+<figcaption>Average attack size and the 85% share: <a href="https://www.nexusguard.com/threat-report/ddos-trend-report-2025">Nexusguard 2025 DDoS Trends Report</a> (June 2025). Peak attack size: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026, retrieved 16 September 2026). The two growth figures come from different vendors over different periods and are not a like-for-like pair. The maximum grew. The distribution did not.</figcaption>
 </figure>
 
 <h3>What "We Have Never Been Hit" Usually Means</h3>
@@ -330,7 +326,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <li><strong>Telemetry resolution that survives short events.</strong> Check your sampling rate and export interval against a 30-second attack. If it cannot resolve one, nothing downstream can.</li>
 <li><strong>Temporal correlation across events.</strong> Ten 200 Mbps events against one customer in an hour is a campaign. Most systems have no concept that links them into one incident.</li>
 <li><strong>Automated mitigation for the low-severity band.</strong> Humans cannot be in the control path at six-second timescales. Reserve human judgement for escalation, not for triggering.</li>
-<li><strong>Multi-vector readiness.</strong> Corero reports campaigns combining 50 or more vectors and adapting in real time (<a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a>, 2 April 2026). Single-signature matching does not survive that.</li>
+<li><strong>Multi-vector readiness.</strong> Corero reports campaigns combining 50 or more vectors and adapting in real time (<a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a>, 2 April 2026, retrieved 16 September 2026). Single-signature matching does not survive that.</li>
 <li><strong>Behavioural baselining that updates.</strong> A baseline computed once and never revisited becomes a static threshold with extra steps.</li>
 </ol>
 <p>Our <a href="/network-protection">network protection architecture</a> covers how always-on detection differs from on-demand diversion.</p>
@@ -350,7 +346,7 @@ Nexusguard's own telemetry puts it plainly. 85% of DDoS attacks remain under 1 G
 <text x="200" y="136" text-anchor="middle" fill="#94a3b8" font-size="12">under 200 Mbps</text>
 <text x="200" y="232" text-anchor="middle" fill="#64748b" font-size="12">Share of sub-1 Gbps attacks</text>
 </svg>
-<figcaption>More than half of sub-1 Gbps attacks stay under 200 Mbps, a volume that reads as ordinary traffic variation on most links. Source: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026).</figcaption>
+<figcaption>More than half of sub-1 Gbps attacks stay under 200 Mbps, a volume that reads as ordinary traffic variation on most links. Source: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026, retrieved 16 September 2026).</figcaption>
 </figure>
 
 <h2>How Nexusguard Approaches the Low-Volume Majority</h2>

@@ -28,6 +28,22 @@ This is not a complaint about journalists. It is a complaint about slides, inclu
 > - Threshold-based detection and sampled flow telemetry are not failing at this job. They were configured to ignore this traffic band on purpose, to suppress false positives.
 > - At this size, a DDoS event is often reconnaissance or cover rather than a disruption attempt, which makes it a security signal, not just an availability one.
 
+<!-- blog-hygiene:toc:begin -->
+**In this article:**
+
+- [Most DDoS Attacks Are Too Small to Make the Headline](#most-ddos-attacks-are-too-small-to-make-the-headline)
+- [What Counts as a Sub-Saturating Attack?](#what-counts-as-a-sub-saturating-attack)
+- [Why Threshold-Based Detection Is Built to Miss Them](#why-threshold-based-detection-is-built-to-miss-them)
+- [The Small Attack Is Often Not the Attack](#the-small-attack-is-often-not-the-attack)
+- [What Detection Has to Do Instead](#what-detection-has-to-do-instead)
+- [How to Read a DDoS Threat Report, Including Ours](#how-to-read-a-ddos-threat-report-including-ours)
+- [How Nexusguard Approaches the Low-Volume Majority](#how-nexusguard-approaches-the-low-volume-majority)
+- [Methodology and Sources](#methodology-and-sources)
+- [Frequently Asked Questions](#frequently-asked-questions)
+- [The Number That Should Be on the Slide](#the-number-that-should-be-on-the-slide)
+
+<!-- blog-hygiene:toc:end -->
+
 ## Most DDoS Attacks Are Too Small to Make the Headline
 
 The size distribution is not in dispute, and it is remarkably consistent across vendors who see very different slices of internet traffic.
@@ -90,7 +106,7 @@ For the spread-based variant, see how [bit-and-piece and carpet bombing attacks]
 
 Three failure modes show up well below saturation:
 
-- **Stateful device exhaustion.** Firewalls, load balancers and NAT gateways run out of session table entries long before they run out of bandwidth. A 200 Mbps SYN flood can exhaust state on a device rated for far more throughput.
+- **Stateful device exhaustion.** Firewalls, load balancers and NAT gateways run out of session table entries long before they run out of bandwidth. A 200 Mbps SYN flood can exhaust state on a device rated for far more throughput. (Illustrative: the exact threshold depends on the device's session table size and timeout settings, not on its rated throughput.)
 - **SLA-relevant degradation.** Latency and packet loss that never register as an outage still breach performance commitments, and customers feel them before your monitoring does.
 - **Support cost with no incident to point at.** Tickets arrive, engineers investigate, nothing correlates with a security event, and the time is written off as an unexplained blip.
 
@@ -105,28 +121,24 @@ Telemetry compounds it. Sampled flow at 1:1000 with a five-minute export interva
 Then there is the arithmetic of reactive mitigation. If detection takes 60 seconds and diversion to scrubbing takes another 60, a six-second pulse has finished twenty times over before anything engages. On-demand scrubbing is not tuned badly for this class of attack. It is structurally incapable of touching it.
 
 <figure>
-<svg viewBox="0 0 640 280" role="img" aria-label="Average attack size rose 69 percent year over year and peak attack size rose 262 percent, while the share of attacks under 1 Gbps held at 85 percent.">
+<svg viewBox="0 0 640 220" role="img" aria-label="Headline metrics versus the size distribution. Average attack size rose 69 percent year over year per Nexusguard 2025. Peak attack size rose 262 percent per Corero 2026. The share of attacks under 1 Gbps held at 85 percent per Nexusguard 2025. The two growth figures come from different vendors over different periods and are not a like-for-like pair.">
 <title>Headline metrics versus the size distribution</title>
-<line x1="60" y1="60" x2="60" y2="215" stroke="#94a3b8" stroke-width="1"></line>
-<text x="60" y="46" fill="#94a3b8" font-size="11">Year-over-year change (left two) against share of all attacks (right)</text>
-<line x1="60" y1="215" x2="600" y2="215" stroke="#94a3b8" stroke-width="1"></line>
-<line x1="150" y1="215" x2="150" y2="95" stroke="#f97316" stroke-width="2"></line>
-<circle cx="150" cy="95" r="8" fill="#f97316"></circle>
-<text x="150" y="82" text-anchor="middle" fill="#64748b" font-size="13">+69%</text>
-<text x="150" y="235" text-anchor="middle" fill="#64748b" font-size="12">Average</text>
-<text x="150" y="250" text-anchor="middle" fill="#64748b" font-size="12">attack size</text>
-<line x1="330" y1="215" x2="330" y2="70" stroke="#f97316" stroke-width="2"></line>
-<circle cx="330" cy="70" r="8" fill="#f97316"></circle>
-<text x="330" y="57" text-anchor="middle" fill="#64748b" font-size="13">+262%</text>
-<text x="330" y="235" text-anchor="middle" fill="#64748b" font-size="12">Peak</text>
-<text x="330" y="250" text-anchor="middle" fill="#64748b" font-size="12">attack size</text>
-<line x1="510" y1="215" x2="510" y2="205" stroke="#2563eb" stroke-width="2"></line>
-<circle cx="510" cy="205" r="8" fill="#2563eb"></circle>
-<text x="510" y="192" text-anchor="middle" fill="#64748b" font-size="13">unchanged</text>
-<text x="510" y="235" text-anchor="middle" fill="#64748b" font-size="12">Share under</text>
-<text x="510" y="250" text-anchor="middle" fill="#64748b" font-size="12">1 Gbps (85%)</text>
+<text x="20" y="28" fill="#64748b" font-size="12">What moved, and what did not</text>
+<rect x="20" y="50" width="190" height="120" rx="6" fill="none" stroke="#e2e8f0" stroke-width="2"></rect>
+<text x="115" y="105" text-anchor="middle" fill="#f97316" font-size="34">+69%</text>
+<text x="115" y="132" text-anchor="middle" fill="#64748b" font-size="13">Average attack size</text>
+<text x="115" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">Nexusguard, 2025</text>
+<rect x="225" y="50" width="190" height="120" rx="6" fill="none" stroke="#e2e8f0" stroke-width="2"></rect>
+<text x="320" y="105" text-anchor="middle" fill="#f97316" font-size="34">+262%</text>
+<text x="320" y="132" text-anchor="middle" fill="#64748b" font-size="13">Peak attack size</text>
+<text x="320" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">Corero, 2026</text>
+<rect x="430" y="50" width="190" height="120" rx="6" fill="none" stroke="#e2e8f0" stroke-width="2"></rect>
+<text x="525" y="105" text-anchor="middle" fill="#2563eb" font-size="34">85%</text>
+<text x="525" y="132" text-anchor="middle" fill="#64748b" font-size="13">Share under 1 Gbps</text>
+<text x="525" y="152" text-anchor="middle" fill="#94a3b8" font-size="11">Nexusguard, 2025</text>
+<text x="20" y="196" fill="#94a3b8" font-size="11">Not to scale: the three figures measure different things and share no axis.</text>
 </svg>
-<figcaption>Year-over-year change. Average attack size and the 85 per cent share: <a href="https://www.nexusguard.com/threat-report/ddos-trend-report-2025">Nexusguard 2025 DDoS Trends Report</a> (June 2025). Peak attack size: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026). The maximum grew. The distribution did not.</figcaption>
+<figcaption>Average attack size and the 85% share: <a href="https://www.nexusguard.com/threat-report/ddos-trend-report-2025">Nexusguard 2025 DDoS Trends Report</a> (June 2025). Peak attack size: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026, retrieved 16 September 2026). The two growth figures come from different vendors over different periods and are not a like-for-like pair. The maximum grew. The distribution did not.</figcaption>
 </figure>
 
 ### What "We Have Never Been Hit" Usually Means
@@ -162,7 +174,7 @@ That sentence contains four separate requirements, and most deployments miss at 
 3. **Telemetry resolution that survives short events.** Check your sampling rate and export interval against a 30-second attack. If it cannot resolve one, nothing downstream can.
 4. **Temporal correlation across events.** Ten 200 Mbps events against one customer in an hour is a campaign. Most systems have no concept that links them into one incident.
 5. **Automated mitigation for the low-severity band.** Humans cannot be in the control path at six-second timescales. Reserve human judgement for escalation, not for triggering.
-6. **Multi-vector readiness.** Corero reports campaigns combining 50 or more vectors and adapting in real time ([Corero 2026 Threat Intelligence Report](https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/), 2 April 2026). Single-signature matching does not survive that.
+6. **Multi-vector readiness.** Corero reports campaigns combining 50 or more vectors and adapting in real time ([Corero 2026 Threat Intelligence Report](https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/), 2 April 2026, retrieved 16 September 2026). Single-signature matching does not survive that.
 7. **Behavioural baselining that updates.** A baseline computed once and never revisited becomes a static threshold with extra steps.
 
 Our [network protection architecture](/network-protection) covers how always-on detection differs from on-demand diversion.
@@ -189,7 +201,7 @@ Four habits will get you more out of any vendor report than reading the executiv
 <text x="200" y="136" text-anchor="middle" fill="#94a3b8" font-size="12">under 200 Mbps</text>
 <text x="200" y="232" text-anchor="middle" fill="#64748b" font-size="12">Share of sub-1 Gbps attacks</text>
 </svg>
-<figcaption>More than half of sub-1 Gbps attacks stay under 200 Mbps, a volume that reads as ordinary traffic variation on most links. Source: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026).</figcaption>
+<figcaption>More than half of sub-1 Gbps attacks stay under 200 Mbps, a volume that reads as ordinary traffic variation on most links. Source: <a href="https://www.corero.com/corero-finds-ai-drives-faster-multi-vector-threats/">Corero 2026 Threat Intelligence Report</a> (2 April 2026, retrieved 16 September 2026).</figcaption>
 </figure>
 
 ## How Nexusguard Approaches the Low-Volume Majority
